@@ -3,7 +3,8 @@
 //Sorting
 
 //global variables
-var array = [3, 1, 2];
+var data = [1, 2, 3, 4, 5, 6];
+var sorted = [];
 var unsorted = [];
 
 function setup() {
@@ -12,15 +13,26 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+  //
+  arrayCopy(data, unsorted, data.length);
+  organize(data)
 }
 
 function draw() {
 }
 
-function sort(array){
-  unsorted = array
-  for(var i = 0; i < unsorted.length - 1; i++){
-    target = unsorted[i]
-    for(var j = 0; j)
+function organize(){
+  for(var j = 0; j < data.length; j++){
+    var max = unsorted[0]
+    var maxIndex = 0
+    for (var i = 1; i < unsorted.length; i++){
+      if(unsorted[i] > max){
+        maxIndex = i;
+        max = unsorted[i];
+      }
+    }
+    sorted.push(max);
+    unsorted.splice(maxIndex);
   }
+  console.log(sorted);
 }
