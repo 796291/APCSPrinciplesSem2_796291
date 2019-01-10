@@ -1,16 +1,26 @@
+//Jakob Hachigian-Kreutzer
+//1/9/19
+//Sorting
 
-//  This is a comment
-//  The setup function function is called once when your program begins
+//global variables
+var array = [3, 1, 2];
+var unsorted = [];
+
 function setup() {
+  //canvas
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-
-
 }
 
-//  The draw function is called @ 30 fps
 function draw() {
+}
 
+function sort(array){
+  unsorted = array
+  for(var i = 0; i < unsorted.length - 1; i++){
+    target = unsorted[i]
+    for(var j = 0; j)
+  }
 }
