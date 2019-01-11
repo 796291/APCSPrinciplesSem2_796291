@@ -5,7 +5,7 @@
 //global variables
 
 //original data set
-var data = [6, 5, 4, 3, 2, 1];
+var data = [7, 8, 3, 2, 1, 9, 4];
 //array of sorted data
 var sorted = [];
 //unsorted array of data
