@@ -1,5 +1,5 @@
 //Jakob Hachigian-Kreutzer
-//1/9/19
+//1/10/19
 //Select Sort
 
 //global variables
@@ -14,7 +14,7 @@ var unsorted = [];
 function setup() {
   //copy data to unsorted array
   arrayCopy(data, unsorted, data.length);
-  organize(data)
+  organize()
 }
 
 function draw() {
@@ -31,7 +31,7 @@ function organize(){
       }
     }
     sorted.push(min);
-    unsorted.splice(minIndex);
+    unsorted.splice(minIndex, 1);
   }
   //prints final sorted array
   console.log(sorted);

@@ -5,7 +5,7 @@
 //global variables
 
 //original data set
-var data = [1, 2, 3, 4, 5, 6];
+var data = [1, 2, 4, 5, 3, 6];
 //array of sorted data
 var sorted = [];
 //unsorted array of data
@@ -14,7 +14,7 @@ var unsorted = [];
 function setup() {
   //copy data to unsorted array
   arrayCopy(data, unsorted, data.length);
-  organize(data)
+  organize();
 }
 
 function draw() {
@@ -31,7 +31,7 @@ function organize(){
       }
     }
     sorted.push(max);
-    unsorted.splice(maxIndex);
+    unsorted.splice(maxIndex, 1);
   }
   //prints final sorted array
   console.log(sorted);
