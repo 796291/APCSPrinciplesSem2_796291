@@ -4,6 +4,8 @@
 
 //global variables
 
+//timer
+var timer = millis();
 //original data set
 var data = [7, 8, 3, 2, 1, 9, 4];
 //array of sorted data
@@ -35,4 +37,5 @@ function organize(){
   }
   //prints final sorted array
   console.log(sorted);
+  console.log(timer);
 }

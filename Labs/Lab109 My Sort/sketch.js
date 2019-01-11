@@ -4,6 +4,8 @@
 
 //global variables
 
+//timer
+var timer = 1;
 //original data set
 var data = [1, 2, 4, 5, 3, 6];
 //array of sorted data
@@ -35,4 +37,5 @@ function organize(){
   }
   //prints final sorted array
   console.log(sorted);
+  console.log(timer);
 }

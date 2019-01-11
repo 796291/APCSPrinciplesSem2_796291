@@ -3,6 +3,7 @@
 //Bubble Sort
 
 //global variables
+var timer = millis();
 var data = [1, 4, 5, 9, 90, 81];
 
 
@@ -33,4 +34,5 @@ function bubbleSort(data) {
         }
     }
     console.log(data);
+    console.log(timer);
 }
