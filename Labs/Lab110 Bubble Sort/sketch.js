@@ -3,7 +3,13 @@
 //Bubble Sort
 
 //global variables
-var timer = millis();
+//measurements
+var compares = 0
+var swaps = 0;
+//timer
+var millisecondEnd = 0;
+var milliseondStart = 0;
+
 var data = [1, 4, 5, 9, 90, 81];
 
 
@@ -17,7 +23,8 @@ function draw() {
 }
 
 function bubbleSort(data) {
-    var length = data.length;
+  millisecondStart = millis();  
+  var length = data.length;
     //number of passes
     for (var i = 0; i < length; i++) {
         //notice that j < (length - i)

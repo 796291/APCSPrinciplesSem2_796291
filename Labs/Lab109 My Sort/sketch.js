@@ -4,8 +4,12 @@
 
 //global variables
 
+//measurements
+var compares = 0
+var swaps = 0;
 //timer
-var timer = 1;
+var millisecondEnd = 0;
+var milliseondStart = 0;
 //original data set
 var data = [1, 2, 4, 5, 3, 6];
 //array of sorted data
@@ -23,19 +27,26 @@ function draw() {
 }
 
 function organize(){
+  millisecondStart = millis();
   for(var j = 0; j < data.length; j++){
     var max = unsorted[0]
     var maxIndex = 0
     for (var i = 1; i < unsorted.length; i++){
+      compares++;
       if(unsorted[i] > max){
         maxIndex = i;
         max = unsorted[i];
+        swaps++;
       }
     }
     sorted.push(max);
     unsorted.splice(maxIndex, 1);
   }
+  millisecondEnd = millis();
   //prints final sorted array
   console.log(sorted);
-  console.log(timer);
+  console.log(millisecondStart + " start");
+  console.log(millisecondEnd + " end");
+  console.log(swaps);
+  console.log(compares);
 }
