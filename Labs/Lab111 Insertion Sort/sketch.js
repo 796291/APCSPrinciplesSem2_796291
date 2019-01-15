@@ -4,11 +4,12 @@
 
 //global variables
 //measurements
-var compares = 0
+var compares = 0;
 var swaps = 0;
 //timer
-var millisecondEnd = 0;
-var milliseondStart = 0;
+var millisecondEnd;
+var milliseondStart;
+var difference;
 
 var data = [];
 var dataNumbers = 20000;
@@ -39,9 +40,11 @@ function organize(){
   }
   millisecondEnd = millis();
   //prints final sorted array
+  difference = millisecondStart - millisecondEnd;
   console.log(data);
   console.log(millisecondStart + " start");
   console.log(millisecondEnd + " end");
+  console.log(difference + " difference");
   console.log(swaps + " swaps");
   console.log(compares + " compares");
 }
