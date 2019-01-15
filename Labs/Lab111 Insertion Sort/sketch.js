@@ -10,9 +10,13 @@ var swaps = 0;
 var millisecondEnd = 0;
 var milliseondStart = 0;
 
-var data = [9, 2, 7, 3, 1, 6, 4];
+var data = [];
+var dataNumbers = 20000;
 
 function setup(){
+  for(var i = 0; i < dataNumbers; i++){
+    data.push(random(0, 2000));
+  }
   organize();
 }
 
@@ -38,6 +42,6 @@ function organize(){
   console.log(data);
   console.log(millisecondStart + " start");
   console.log(millisecondEnd + " end");
-  console.log(swaps);
-  console.log(compares);
+  console.log(swaps + " swaps");
+  console.log(compares + " compares");
 }

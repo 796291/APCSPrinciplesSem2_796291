@@ -10,10 +10,14 @@ var swaps = 0;
 var millisecondEnd = 0;
 var milliseondStart = 0;
 
-var data = [1, 4, 5, 9, 90, 81];
+var data = [];
+var dataNumbers = 20000
 
 
 function setup() {
+  for(var i = 0; i < dataNumbers; i++){
+    data.push(random(0, 2000));
+  }
   //remove blank black screen
   noCanvas();
   bubbleSort(data);
@@ -23,7 +27,7 @@ function draw() {
 }
 
 function bubbleSort(data) {
-  millisecondStart = millis();  
+  millisecondStart = millis();
   var length = data.length;
     //number of passes
     for (var i = 0; i < length; i++) {
@@ -32,14 +36,20 @@ function bubbleSort(data) {
             //Compare the adjacent positions
             var a = data[j];
             var b = data[j+1];
+            compares++;
             if(a > b) {
                 //swap variables (use temp variable)
                 var temp = data[j];
                 data[j] = data[j+1];
                 data[j+1] = temp;
+                swaps++;
             }
         }
     }
+    millisecondEnd = millis();
     console.log(data);
-    console.log(timer);
+    console.log(millisecondStart + " start");
+    console.log(millisecondEnd + " end");
+    console.log(swaps + " swaps");
+    console.log(compares + " compares");
 }

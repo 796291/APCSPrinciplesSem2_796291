@@ -11,13 +11,17 @@ var swaps = 0;
 var millisecondEnd = 0;
 var milliseondStart = 0;
 //original data set
-var data = [1, 2, 4, 5, 3, 6];
+var data = [];
+dataNumbers = 20000;
 //array of sorted data
 var sorted = [];
 //unsorted array of data
 var unsorted = [];
 
 function setup() {
+  for(var i = 0; i < dataNumbers; i++){
+    data.push(random(0, 2000));
+  }
   //copy data to unsorted array
   arrayCopy(data, unsorted, data.length);
   organize();
@@ -47,6 +51,6 @@ function organize(){
   console.log(sorted);
   console.log(millisecondStart + " start");
   console.log(millisecondEnd + " end");
-  console.log(swaps);
-  console.log(compares);
+  console.log(swaps + " swaps");
+  console.log(compares + " compares");
 }
