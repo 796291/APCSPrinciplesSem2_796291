@@ -40,7 +40,7 @@ function organize(){
   }
   millisecondEnd = millis();
   //prints final sorted array
-  difference = millisecondStart - millisecondEnd;
+  difference = millisecondEnd - millisecondStart;
   console.log(data);
   console.log(millisecondStart + " start");
   console.log(millisecondEnd + " end");
