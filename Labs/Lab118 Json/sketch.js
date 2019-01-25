@@ -5,7 +5,7 @@
 var data = [];
 
 function preload(){
-  data = loadJSON("data.json");
+  data = loadJSON("population.json");
 }
 
 function setup() {
@@ -13,12 +13,13 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+  bubble();
 }
 
 function draw() {
 }
 
-function organize(){
+function bubble(){
   var temp;
   for (var i = 1; i < data.countrydata.length; i++){
     for(var j = i; j > 0; j--){
@@ -26,7 +27,6 @@ function organize(){
         temp = data.countrydata[j];
         data.countrydata[j] = data.countrydata[j-1];
         data.countrydata[j-1] = temp;
-        swaps++;
       }
     }
   }
