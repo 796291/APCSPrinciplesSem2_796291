@@ -3,6 +3,7 @@
 //Json Sort
 
 var data = [];
+var sortBy = "males";
 
 function preload(){
   data = loadJSON("population.json");
@@ -21,12 +22,36 @@ function draw() {
 
 function bubble(){
   var temp;
-  for (var i = 1; i < data.countrydata.length; i++){
-    for(var j = i; j > 0; j--){
-      if(data.countrydata[j].total < data.countrydata[j-1].total){
-        temp = data.countrydata[j];
-        data.countrydata[j] = data.countrydata[j-1];
-        data.countrydata[j-1] = temp;
+  if(sortBy = "total"){
+    for (var i = 1; i < data.countrydata.length; i++){
+      for(var j = i; j > 0; j--){
+        if(data.countrydata[j].total < data.countrydata[j-1].total){
+          temp = data.countrydata[j];
+          data.countrydata[j] = data.countrydata[j-1];
+          data.countrydata[j-1] = temp;
+        }
+      }
+    }
+  }
+  if(sortBy = "females"){
+    for (var i = 1; i < data.countrydata.length; i++){
+      for(var j = i; j > 0; j--){
+        if(data.countrydata[j].total < data.countrydata[j-1].total){
+          temp = data.countrydata[j];
+          data.countrydata[j] = data.countrydata[j-1];
+          data.countrydata[j-1] = temp;
+        }
+      }
+    }
+  }
+  if(sortBy = "males"){
+    for (var i = 1; i < data.countrydata.length; i++){
+      for(var j = i; j > 0; j--){
+        if(data.countrydata[j].total < data.countrydata[j-1].total){
+          temp = data.countrydata[j];
+          data.countrydata[j] = data.countrydata[j-1];
+          data.countrydata[j-1] = temp;
+        }
       }
     }
   }
