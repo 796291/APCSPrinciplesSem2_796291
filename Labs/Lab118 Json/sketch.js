@@ -3,7 +3,7 @@
 //Json Sort
 
 var data = [];
-var sortBy = "males";
+var sortBy = "total";
 var bigTotal = 0;
 
 function preload(){
@@ -11,12 +11,7 @@ function preload(){
 }
 
 function setup() {
-  var cnv = createCanvas(800, 800);
-  cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
-  fill(200, 30, 150);
   bubble();
-  represent();
 }
 
 function draw() {
@@ -58,17 +53,52 @@ function bubble(){
     }
   }
   console.log(data);
+  barGraph();
 }
 
-function represent(){
-  for(var i = 1; i < data.countrydata.length; i++){
-    bigTotal = bigTotal + data.countrydata[i].total;
+//function representCircle(){
+//  for(var i = 1; i < data.countrydata.length; i++){
+//    bigTotal = bigTotal + data.countrydata[i].total;
+//  }
+//  var lastAngle = 0;
+//  for(var i = 0; i < data.countrydata.length; i ++){
+//    var angle = ((data.countrydata[i].total / bigTotal) * (2 * PI));
+//    fill(0, 0, 10*i);
+//    arc(300, 300, 500, 500, lastAngle, lastAngle + angle);
+//    lastAngle += angle
+//  }
+//}
+
+function barGraph() {
+  var width = 200, // canvas width and height
+      height = 350,
+      margin = 20,
+      w = width - 2 * margin, // chart area width and height
+      h = height - 2 * margin;
+
+  var barWidth =  (h / data.countrydata.length) * 0.8; // width of bar
+  var barMargin = (h / data.countrydata.length) * 0.2; // margin between two bars
+
+  createCanvas(width, height);
+
+  textSize(14);
+
+  push();
+  translate(margin, margin); // ignore margin area
+
+  for(var i=0; i < data.countrydata.length; i++) {
+    console.log("in")
+    push();
+    fill('steelblue');
+    noStroke();
+    translate(0, i* (barWidth + barMargin)); // jump to the top right corner of the bar
+    rect(0, 0, data.countrydata[i], barWidth); // draw rect
+
+    fill('#FFF');
+    text(data.countrydata[i], 5, barWidth/2 + 5); // write data
+
+    pop();
   }
-  var lastAngle = 0;
-  for(var i = 0; i < data.countrydata.length; i ++){
-    var angle = ((data.countrydata[i].total / bigTotal) * (2 * PI));
-    fill(0, 0, 10*i);
-    arc(300, 300, 500, 500, lastAngle, lastAngle + angle);
-    lastAngle += angle
-  }
+
+  pop();
 }
