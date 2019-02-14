@@ -16,11 +16,11 @@ var dataNumbers = 20000
 
 
 function setup() {
-  for(var i = 0; i < dataNumbers; i++){
-    data.push(random(0, 2000));
-  }
+  var cnv = createCanvas(800, 800);
+  cnv.position((windowWidth-width)/2, 30);
+  background(5, 5, 5);
   //remove blank black screen
-  noCanvas();
+  fill(20, 30, 15);;
   bubbleSort(data);
 }
 
