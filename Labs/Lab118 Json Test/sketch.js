@@ -17,7 +17,7 @@ function setup() {
   textSize(10);
   textAlign(CENTER, CENTER);
   //calls
-  organize();
+  organize('total');
 }
 
 
@@ -25,12 +25,12 @@ function draw() {
 }
 
 
-function organize(){
+function organize(sortby){
   var temp;
   for (var i = 1; i < data.countrydata.length; i++){
     for(var j = i; j > 0; j--){
       //add change sorting by command
-      if(data.countrydata[j].country < data.countrydata[j-1].country){
+      if(data.countrydata[j][sortby] < data.countrydata[j-1][sortby]){
         temp = data.countrydata[j];
         data.countrydata[j] = data.countrydata[j-1];
         data.countrydata[j-1] = temp;
