@@ -1,7 +1,7 @@
 //Jakob Hachigian-Kreutzer
 //2/26/19
 //Json Sort
-
+var sort = "country";
 var data = [];
 function preload(){
   data = loadJSON("population.json");
@@ -16,12 +16,19 @@ function setup() {
   //text
   textSize(10);
   textAlign(CENTER, CENTER);
-  //calls
-  organize('total');
+  //directions
+  console.log("c: sort by country")
+  console.log("t: sort by total")
+  console.log("m: sort by males")
+  console.log("f: sort by females")
 }
 
 
 function draw() {
+  //redraw background
+  background(5, 5, 5);
+  //calls
+  organize(sort);
 }
 
 
@@ -38,7 +45,7 @@ function organize(sortby){
     }
   }
   drawWords();
-  check();
+  //check();
   bars();
 }
 
@@ -92,22 +99,39 @@ function bars(){
   //total
   for(var i = 1; i < data.countrydata.length; i++){
     var size = (data.countrydata[i].total / allTotal) * (100);
-    console.log(size + "size");
     fill(0, 255, 0);
     rect(350, 10 + (i*10), size*5, 10);
   }
   //male
   for(var i = 1; i < data.countrydata.length; i++){
     var size = (data.countrydata[i].males / allMale) * (100);
-    console.log(size + "size");
     fill(0, 0, 255);
     rect(550, 10 + (i*10), size*5, 10);
   }
   //female
   for(var i = 1; i < data.countrydata.length; i++){
     var size = (data.countrydata[i].females / allFemale) * (100);
-    console.log(size + "size");
     fill(0, 0, 255);
     rect(750, 10 + (i*10), size*5, 10);
+  }
+}
+
+
+function keyPressed(){
+  //c; country
+  if(keyCode === 67){
+    sort = "country";
+  }
+  //t; total
+  if(keyCode === 84){
+    sort = "total";
+  }
+  //m; male
+  if(keyCode === 77){
+    sort = "males";
+  }
+  //f; female
+  if(keyCode === 70){
+    sort = "females";
   }
 }
