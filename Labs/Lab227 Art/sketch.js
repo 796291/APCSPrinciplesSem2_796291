@@ -1,12 +1,13 @@
 //Global variables
 var Balls = [];
 var b1;
+var toggle = true;
 
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadBalls(10);
+  loadBalls(1000);
   b1 = new Ball(createVector(width/2, height/2), createVector(2,5), 100, color(255, 0, 0));
 }
 
@@ -23,9 +24,15 @@ function loadBalls(number){
 
 
 function draw(){
-  background(random(0, 255), random(0, 255), random(0, 255), 5);
-  b1.run();
-  for(var i = 0; i < Balls.length; i = i + 1){
-    Balls[i].run();
+  if(toggle){
+    //background(0, 0, 0, 200);
+    b1.run();
+    for(var i = 0; i < Balls.length; i = i + 1){
+      Balls[i].run();
+    }
   }
+}
+
+function mouseClicked(){
+  toggle = !toggle;
 }
