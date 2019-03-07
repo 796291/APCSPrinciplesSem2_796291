@@ -48,6 +48,14 @@ function Ball(loc, vel, rad, col){
   this.render = function(){
     stroke(random(0, 255), random(0, 255), random(0, 255));
     strokeWeight(.5);
-    line(this.loc.x, this.loc.y, b1.loc.x, b1.loc.y);
+    //rule1
+    //line(this.loc.x, this.loc.y, b1.loc.x, b1.loc.y);
+    //rule2
+    //line(this.loc.x, this.loc.y, this.loc.x - 50, this.loc.y - 50);
+    //rule3
+    line(b1.loc.x, b1.loc.y, 0, 0);
+    line(b1.loc.x, b1.loc.y, 0, 800);
+    line(b1.loc.x, b1.loc.y, 800, 0);
+    line(b1.loc.x, b1.loc.y, 800, 800);
   }
 }
