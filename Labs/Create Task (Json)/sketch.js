@@ -16,6 +16,7 @@ function setup() {
   //text
   textSize(10);
   textAlign(CENTER, CENTER);
+  //single call
   organize(sortname);
 }
 
@@ -40,38 +41,12 @@ function organize(sortby){
       }
     }
   }
-  drawWords();
   check();
-}
-
-
-function drawWords(){
-  textAlign(LEFT);
 }
 
 
 function check(){
   for(var i = 1; i < data.length; i++){
     console.log(data[i].name);
-  }
-}
-
-
-function keyPressed(){
-  //c; country
-  if(keyCode === 67){
-    sortname = "country";
-  }
-  //t; total
-  if(keyCode === 84){
-    sortname = "total";
-  }
-  //m; male
-  if(keyCode === 77){
-    sortname = "males";
-  }
-  //f; female
-  if(keyCode === 70){
-    sortname = "females";
   }
 }
