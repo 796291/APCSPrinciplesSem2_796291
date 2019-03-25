@@ -18,6 +18,9 @@ function setup() {
   textAlign(CENTER, CENTER);
   //single call
   organize(sortname);
+  //buttons + inputs
+  oragnizeInput = createInput();
+  oragnizeInput.position(20, 50);
 }
 
 
@@ -49,4 +52,9 @@ function check(){
   for(var i = 1; i < data.length; i++){
     console.log(data[i].name);
   }
+}
+
+
+function demonstrate(){
+
 }
