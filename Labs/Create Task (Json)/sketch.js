@@ -1,8 +1,10 @@
-//Jakob Hachigian-Kreutzer
-//2/26/19
-//Json Sort
+//CreateTask:Sketch
+
+//Global Variables
 var sortname = "state_name";
 var data = [];
+var dataLoad;
+//Preload
 function preload(){
   data = loadJSON("governers.json");
 }
@@ -16,45 +18,14 @@ function setup() {
   //text
   textSize(10);
   textAlign(CENTER, CENTER);
-  //single call
-  organize(sortname);
-  //buttons + inputs
-  oragnizeInput = createInput();
-  oragnizeInput.position(20, 50);
+  //
+  var dataSorted = new insertionSort(data);
+  dataSorted.run();
 }
 
-
 function draw() {
-  //redraw background
+  //redraw background [Needed for when changing what is shown on canvas]
   background(5, 5, 5);
   //calls
   //organize(sortname);
-}
-
-
-function organize(sortby){
-  var temp;
-  for (var i = 1; i < data.length; i++){
-    for(var j = i; j > 0; j--){
-      //add change sorting by command
-      if(data[j][sortby] < data[j-1][sortby]){
-        temp = data[j];
-        data[j] = data[j-1];
-        data[j-1] = temp;
-      }
-    }
-  }
-  check();
-}
-
-
-function check(){
-  for(var i = 1; i < data.length; i++){
-    console.log(data[i].name);
-  }
-}
-
-
-function demonstrate(){
-
 }
