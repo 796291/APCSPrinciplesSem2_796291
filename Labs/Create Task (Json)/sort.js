@@ -1,9 +1,11 @@
 //CreateTask:Sort
-function insertionSort(array){
+function insertionSort(array, status, settings){
   this.data = array;
   //status changes depending on keypressed
-  this.status = "state_name"
-
+  this.status = status;
+  //how data is going to be displayed
+  this.settings = settings;
+  
   this.run = function(){
   //will change depending on status and will tell render what to draw
     this.update();
@@ -37,7 +39,6 @@ function insertionSort(array){
         }
       }
     }
-    //check function?
   }
 
 }

@@ -2,11 +2,16 @@
 
 //Global Variables
 var sortname = "state_name";
+var settings = "list";
 var data = [];
 var dataLoad;
+var font1;
+var font2;
 //Preload
 function preload(){
   data = loadJSON("governers.json");
+  font1 = loadFont("TrajanusBricks.ttf");
+  font2 = loadFont("TrajanusBricksXtra.ttf");
 }
 
 
@@ -18,6 +23,7 @@ function setup() {
   //text
   textSize(10);
   textAlign(CENTER, CENTER);
+  textFont(font1);
   //
   var dataSorted = new insertionSort(data);
   dataSorted.run();
