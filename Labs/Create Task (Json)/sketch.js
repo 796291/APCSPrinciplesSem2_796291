@@ -97,7 +97,17 @@ function drawWords(){
   text("At any point in time and in with settings, a governors name came be selected and additional information will be displayed.", 50, 150);
 
   //titles (certain settings)
-  if((settings = "sort") && (sortname = "name")){
+  if((settings = "sort")){
+
+    //rect (same as below)
+    fill(0, 0, 0);
+    tint(255, 255);
+    rect(45, 210, 160, 20);
+    rect(245, 210, 160, 20);
+    rect(445, 210, 160, 20);
+    rect(645, 210, 160, 20);
+    tint(255, 0);
+    //titles
     textAlign(LEFT);
     textStyle(BOLD);
     fill(255, 255, 255);
@@ -135,16 +145,43 @@ function drawWords(){
 }
 
 function mousePressed(){
+  var rectWidth = 160;
+  var rectHight = 20;
   for( var i = 1; i < data.length; i++){
     var rectX = 45;
-    var rectWidth = 160;
     var rectYbase = 210;
-    var rectHight = 20;
     if((mouseX > rectX) && (mouseX < rectX + rectWidth) && (mouseY > rectYbase + (i*20)) && (mouseY < rectYbase + (i*20) + rectHight)){
       //open specific governers page
       settings = "bio";
       governorPage(i);
     }
+  }
+  //governors
+  var govX = 45;
+  var stateX = 245;
+  var partyX = 445;
+  var contactX = 645;
+  if((mouseX > govX) && (mouseX < govX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+    sortname = "name"
+    background(0);
+    organize(sortname);
+  }
+  //state
+  if((mouseX > stateX) && (mouseX < stateX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+    sortname = "state_name"
+    background(0);
+    organize(sortname);
+  }
+  //party
+  if((mouseX > partyX) && (mouseX < partyX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+    sortname = "party"
+    background(0);
+    organize(sortname);
+  }
+  if((mouseX > contactX) && (mouseX < contactX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+    sortname = "contact_page"
+    background(0);
+    organize(sortname);
   }
 }
 
@@ -185,10 +222,14 @@ function governorPage(number){
     text("FACEBOOK: " + facebook, 50, 300);
     var twitter = data[number].twitter_url;
     text("TWITTER: " + twitter, 50, 325);
+    var bio = data[number].biography;
+    text(bio, 50, 375);
     textAlign(CENTER);
     textSize(20);
     textStyle(BOLD);
     text("CONTACTS", 1200/2, 200);
+    text("BIOGRAPHY", 1200/2, 350);
+
   }
   //back button?
 }
