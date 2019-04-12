@@ -83,17 +83,23 @@ function drawWords(){
   textSize(15);
   textStyle(NORMAL);
   textAlign(LEFT);
-  text("There are three different modes with which to represent data. Choose on here:",50, 50)
+  text("There are two different modes with which to represent data. Choose on here:",50, 50)
+  //rectangles for buttons
+  fill(0);
+  tint(255, 255);
+  rect(1120/2, 40, 45, 25);
+  rect(1223/2 - 1, 40, 60, 25);
+  tint(255, 0);
+  //
   fill(255, 0, 0);
   textStyle(BOLD);
   text("SORT", 1120/2, 50);
   text("GROUP", 1223/2, 50);
-  text("RAW", 1350/2, 50);
   fill(255, 255, 255);
   textStyle(NORMAL);
-  text("In SORT mode, click on the different headers to sort the list by that item.", 50, 75)
-  text("With GROUP mode, senators will be grouped together based on shared features. Click on the different headers to group by that item.", 50, 100)
-  text("RAW mode will simply provide a raw list of the senators with no other information. This mode will also provide a search bar to allow users to search specific governers.", 50, 125)
+  text("In SORT mode, click on the different headers to sort the list (in alphabetical order) by that item.", 50, 75)
+  text("In GROUP mode, a graph will be displayed. The graph will reveal how many senators share the same party, religion, etc.", 50, 100)
+  text("What the graph will show is relates to which header is choosen, similar to the SORT mode.", 50, 125)
   text("At any point in time and in with settings, a governors name came be selected and additional information will be displayed.", 50, 150);
 
   //titles (certain settings)
@@ -178,10 +184,13 @@ function mousePressed(){
     background(0);
     organize(sortname);
   }
+  //contact
   if((mouseX > contactX) && (mouseX < contactX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
     sortname = "contact_page"
     background(0);
     organize(sortname);
+    //SORT
+    if((mouseX > sortX) &&
   }
 }
 
