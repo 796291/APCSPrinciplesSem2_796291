@@ -190,7 +190,6 @@ function mousePressed(){
     background(0);
     organize(sortname);
     //SORT
-    if((mouseX > sortX) &&
   }
 }
 
