@@ -1,19 +1,12 @@
-//CreateTask: Sketch
 
 var sortname = "name";
 var settings = "sort";
 var data = [];
 var gov;
 
-var font1;
-
-
 function preload(){
   data = loadJSON("governers.json");
-  font1 = loadFont("TrajanusBricks.ttf");
-  font2 = loadFont("TrajanusBricksXtra.ttf");
 }
-
 
 function setup(){
   //canvas
@@ -23,20 +16,10 @@ function setup(){
   //text
   textSize(15);
   textAlign(CENTER, CENTER);
-  //default font = font1
-  //textFont(font1);
-  //
-  //TEMP CALL HERE
   organize(sortname);
 }
 
-
 function draw(){
-  //redraw background
-  //background(5, 5, 5);
-  //calls
-
-  //organize(sortname)
 }
 
 
@@ -51,12 +34,8 @@ function organize(sortby){
       }
     }
   }
-  //only have check active when calling in setup
-  //(otherwise write in console infinitely)
   //check();
-  //call to represent data
   drawWords();
-  //call to give options to change which data / how its shown
 }
 
 
@@ -70,40 +49,28 @@ function check(){
 function drawWords(){
   //instructions
   //rect holding all instructions
-  fill(0, 0, 0);
-  stroke(255, 255, 255);
-  rect(10, 10, 1200-20, 200 - 20);
-  noStroke();
+  if(settings === "sort"){
+    fill(0, 0, 0);
+    stroke(255, 255, 255);
+    rect(10, 10, 1200-20, 200 - 20);
+    noStroke();
 
-  textAlign(CENTER);
-  textStyle(BOLD);
-  fill(255, 255, 255);
-  textSize(25);
-  text("INSTRUCTIONS", 1200/2, 25);
-  textSize(15);
-  textStyle(NORMAL);
-  textAlign(LEFT);
-  text("There are two different modes with which to represent data. Choose on here:",50, 50)
-  //rectangles for buttons
-  fill(0);
-  tint(255, 255);
-  rect(1120/2, 40, 45, 25);
-  rect(1223/2 - 1, 40, 60, 25);
-  tint(255, 0);
-  //
-  fill(255, 0, 0);
-  textStyle(BOLD);
-  text("SORT", 1120/2, 50);
-  text("GROUP", 1223/2, 50);
-  fill(255, 255, 255);
-  textStyle(NORMAL);
-  text("In SORT mode, click on the different headers to sort the list (in alphabetical order) by that item.", 50, 75)
-  text("In GROUP mode, a graph will be displayed. The graph will reveal how many senators share the same party, religion, etc.", 50, 100)
-  text("What the graph will show is relates to which header is choosen, similar to the SORT mode.", 50, 125)
-  text("At any point in time and in with settings, a governors name came be selected and additional information will be displayed.", 50, 150);
-
+    textAlign(CENTER);
+    textStyle(BOLD);
+    fill(255, 255, 255);
+    textSize(25);
+    text("INSTRUCTIONS", 1200/2, 25);
+    textSize(15);
+    textStyle(NORMAL);
+    textAlign(LEFT);
+    text("The program is built around the idea that everyone should have easy access to their political representatives.", 50, 50)
+    text("Thus, the governors of each state are shown in a list below.The govenors are followed by their state, political party, and contact website.", 50, 75)
+    text("Clicking on any of the headers (Governor, State, Party, or Contact) will sort the list accoording to that information alphabetically.", 50, 100)
+    text("Additionally, the name of a governor can be selected from the list and a more indepth catalog of information will be shown.", 50, 125)
+    text("To return to the full list after selecting a single governor, select the BACK button in the top right of the canvas.", 50, 150);
+  }
   //titles (certain settings)
-  if((settings = "sort")){
+  if(settings === "sort"){
 
     //rect (same as below)
     fill(0, 0, 0);
@@ -151,50 +118,63 @@ function drawWords(){
 }
 
 function mousePressed(){
-  var rectWidth = 160;
-  var rectHight = 20;
-  for( var i = 1; i < data.length; i++){
-    var rectX = 45;
-    var rectYbase = 210;
-    if((mouseX > rectX) && (mouseX < rectX + rectWidth) && (mouseY > rectYbase + (i*20)) && (mouseY < rectYbase + (i*20) + rectHight)){
-      //open specific governers page
-      settings = "bio";
-      governorPage(i);
+  if(settings === "sort"){
+    var rectWidth = 160;
+    var rectHight = 20;
+    for(var i = 1; i < data.length; i++){
+      var rectX = 45;
+      var rectYbase = 210;
+      if((mouseX > rectX) && (mouseX < rectX + rectWidth) && (mouseY > rectYbase + (i*20)) && (mouseY < rectYbase + (i*20) + rectHight)){
+        //open specific governers page
+        settings = "bio";
+        governorPage(i);
+      }
+    }
+    //governors
+    var govX = 45;
+    var stateX = 245;
+    var partyX = 445;
+    var contactX = 645;
+    if((mouseX > govX) && (mouseX < govX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+      sortname = "name"
+      background(0);
+      organize(sortname);
+    }
+    //state
+    if((mouseX > stateX) && (mouseX < stateX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+      sortname = "state_name"
+      background(0);
+      organize(sortname);
+    }
+    //party
+    if((mouseX > partyX) && (mouseX < partyX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+      sortname = "party"
+      background(0);
+      organize(sortname);
+    }
+    //contact
+    if((mouseX > contactX) && (mouseX < contactX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
+      sortname = "contact_page"
+      background(0);
+      organize(sortname);
     }
   }
-  //governors
-  var govX = 45;
-  var stateX = 245;
-  var partyX = 445;
-  var contactX = 645;
-  if((mouseX > govX) && (mouseX < govX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
-    sortname = "name"
-    background(0);
-    organize(sortname);
-  }
-  //state
-  if((mouseX > stateX) && (mouseX < stateX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
-    sortname = "state_name"
-    background(0);
-    organize(sortname);
-  }
-  //party
-  if((mouseX > partyX) && (mouseX < partyX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
-    sortname = "party"
-    background(0);
-    organize(sortname);
-  }
-  //contact
-  if((mouseX > contactX) && (mouseX < contactX + rectWidth) && (mouseY > 210) && (mouseY < 210 + rectHight)){
-    sortname = "contact_page"
-    background(0);
-    organize(sortname);
-    //SORT
+  //BACK [only in bio screen]
+  if(settings === "bio"){
+    var backX = 1200-102;
+    var backY = 10;
+    if((mouseX > backX) && (mouseX < backX+63) && (mouseY > backY) && (mouseY < backY+25)){
+      settings = "sort";
+      background(0);
+      sortname = "name";
+      organize(sortname);
+      console.log("back");
+    }
   }
 }
 
 function governorPage(number){
-  if(settings == "bio"){
+  if(settings === "bio"){
     background(0, 0, 0);
     textAlign(CENTER);
     textSize(25);
@@ -239,8 +219,14 @@ function governorPage(number){
     text("BIOGRAPHY", 1200/2, 350);
 
     //back button
-    rect()
-    textAlign(RIGHT);
+    fill(0);
+    tint(255, 255);
+    stroke(255, 0, 0);
+    rect(1200-102, 10, 63, 25);
+    tint(255, 0);
+    fill(255);
+    noStroke();
+    textAlign(LEFT);
     text("BACK", 1200-100, 25);
   }
 }
