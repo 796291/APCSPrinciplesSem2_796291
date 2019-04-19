@@ -231,13 +231,16 @@ function governorPage(number){
     var twitter = data[number].twitter_url;
     text("TWITTER: " + twitter, 50, 325);
     var bio = data[number].biography;
-    text(bio, 50, 375);
+    text(bio, 50, 375, 1200-100);
     textAlign(CENTER);
     textSize(20);
     textStyle(BOLD);
     text("CONTACTS", 1200/2, 200);
     text("BIOGRAPHY", 1200/2, 350);
 
+    //back button
+    rect()
+    textAlign(RIGHT);
+    text("BACK", 1200-100, 25);
   }
-  //back button?
 }
